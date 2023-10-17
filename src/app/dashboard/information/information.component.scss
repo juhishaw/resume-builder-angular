@@ -1,0 +1,30 @@
+mat-icon {
+    font-size: 16px;
+    top: 3px;
+    position: relative;
+    left: 0;
+    height: fit-content;
+    width: fit-content;
+    padding-right: 5px;
+    color: #d63384;
+}
+
+.wrapper {
+    .contact {
+        font-size: 14px;
+    color: grey;
+    line-height: 18px;
+    }
+
+    .address-info {
+        font-size: 14px;
+        color: dimgray;
+        line-height: 18px;
+        padding: 10px 0;
+    }
+
+    .desc {
+        font-size: 16px;
+        text-align: center;
+    }
+}

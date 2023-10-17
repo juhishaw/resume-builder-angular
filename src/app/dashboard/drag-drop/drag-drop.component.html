@@ -1,0 +1,49 @@
+<div class="wrapper">
+    <div class="title">Skills</div>
+
+    <app-filter-data (getOutput)="getOutput($event)"></app-filter-data>
+
+    <div class="drag-drop-wrapper">
+      <div class="drag-drop-container">
+        <div class="semi-title">Required</div>
+        <div
+          cdkDropList
+          #requiredList="cdkDropList"
+          [cdkDropListData]="required"
+          [cdkDropListConnectedTo]="[excelList]"
+          class="list-container"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="box-wrapper" *ngFor="let item of required | filter: searchBy" cdkDrag>
+            <div class="custom-placeholder" *cdkDragPlaceholder></div>
+            {{ item }}
+          </div>
+        </div>
+      </div>
+      
+      <div class="drag-drop-container">
+        <div class="semi-title">You excel</div>
+        <div
+          cdkDropList
+          #excelList="cdkDropList"
+          [cdkDropListData]="excel"
+          [cdkDropListConnectedTo]="[requiredList]"
+          class="list-container"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div class="box-wrapper" *ngFor="let item of excel" cdkDrag>
+            <div class="custom-placeholder" *cdkDragPlaceholder></div>
+            {{ item }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="button-wrapper flex-center">
+      <button mat-stroked-button color="primary" [disabled]="!excel.length" class="custom-btn" type="submit" (click)="onSubmit()">
+        Submit
+      </button>
+    </div>
+
+    <code> Result: {{ formValue | json }} </code>
+</div>
+

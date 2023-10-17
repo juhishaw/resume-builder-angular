@@ -1,0 +1,37 @@
+.bottom {
+
+    .button-wrapper {
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+}
+
+.form-group {
+    position: relative;
+
+    .mat-icon {
+       right: 0;
+       top: 15px;
+       position: relative;
+        padding: 0;
+        cursor: pointer;
+        height: fit-content;
+        width: fit-content;
+    }
+}
+
+.skills {
+    padding: 0 15px;
+}
+
+.dynamic-form-wrapper {
+    margin: 20px 0;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .form-loop {
+        margin-bottom: 20px;
+    }
+}

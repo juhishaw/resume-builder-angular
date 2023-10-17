@@ -1,0 +1,27 @@
+.mdc-text-field--no-label:not(.mdc-text-field--textarea)
+  .mat-mdc-form-field-input-control.mdc-text-field__input, .mdc-text-field--filled {
+  height: 56px !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label.mdc-floating-label {
+    color: grey;
+    font-size: 14px;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple:before {
+    border-bottom-color: #0000006b;
+}
+
+
+code {
+  font-size: .875em;
+  color: var(--bs-code-color);
+  word-wrap: break-word;
+  background: #eee;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  border: 1px #ddd solid;
+  border-radius: 4px;
+  margin: 20px 0;
+}

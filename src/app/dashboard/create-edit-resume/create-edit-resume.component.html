@@ -1,0 +1,213 @@
+<div class="wrapper">
+  <div class="create-edit-resume-wrapper">
+    <div class="title">Personal Information</div>
+
+    <form [formGroup]="createEditFormGroup" (ngSubmit)="onSubmit()">
+      <!-- //Basic Info -->
+      <div class="form-container row">
+        <div class="form-wrapper col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="John" formControlName="fname" />
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['fname'].invalid &&
+              (formControl['fname'].dirty || formControl['fname'].touched)
+            "
+          >
+            <div *ngIf="formControl['fname']">
+              What do I call you?
+            </div>
+          </div>
+        </div>
+        <div class="form-wrapper col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Doe" formControlName="lname" />
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['lname'].invalid &&
+              (formControl['lname'].dirty || formControl['lname'].touched)
+            "
+          >
+            <div *ngIf="formControl['lname']">
+              Need full name please!!!
+            </div>
+          </div>
+        </div>
+        <div class="form-wrapper col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="johndoe@email.com"
+              formControlName="email"
+            />
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['email'].invalid &&
+              (formControl['email'].dirty || formControl['email'].touched)
+            "
+          >
+            <div *ngIf="formControl['email']">
+              What's your @, we won't SPAM!!
+            </div>
+          </div>
+        </div>
+        <div class="form-wrapper col-md-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Contact</mat-label>
+            <input
+              matInput
+              placeholder="983-xxx-xxxx"
+              formControlName="contact"
+            />
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['contact'].invalid &&
+              (formControl['contact'].dirty || formControl['contact'].touched)
+            "
+          >
+            <div *ngIf="formControl['contact']">
+              Don't be shy, just a call away...
+            </div>
+          </div>
+        </div>
+        <div class="form-wrapper col-md-12">
+          <mat-form-field appearance="fill">
+            <mat-label>Tell me about you!</mat-label>
+            <textarea
+              matInput
+              placeholder="Ex. 100 Main St"
+              formControlName="summary"
+            >
+1600 Amphitheatre Pkwy</textarea
+            >
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['summary'].invalid &&
+              (formControl['summary'].dirty || formControl['summary'].touched)
+            "
+          >
+            <div *ngIf="formControl['summary']">Don't leave this blank!!</div>
+          </div>
+        </div>
+        <div class="form-wrapper col-md-12">
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <textarea
+              matInput
+              placeholder="Ex. 100 Main St"
+              formControlName="address"
+            >
+1600 Amphitheatre Pkwy</textarea
+            >
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['address'].invalid &&
+              (formControl['address'].dirty || formControl['address'].touched)
+            "
+          >
+            <div *ngIf="formControl['address']">
+              Harry Potter style, might send letter!!!
+            </div>
+          </div>
+          <mat-form-field>
+            <mat-label>Address 2</mat-label>
+            <textarea matInput></textarea>
+          </mat-form-field>
+        </div>
+        <div class="form-wrapper col-md-4">
+          <mat-form-field>
+            <mat-label>City</mat-label>
+            <input
+              matInput
+              placeholder="Ex. San Francisco"
+              formControlName="city"
+            />
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['city'].invalid &&
+              (formControl['city'].dirty || formControl['city'].touched)
+            "
+          >
+            <div *ngIf="formControl['city']">What city you said?</div>
+          </div>
+        </div>
+        <div class="form-wrapper col-md-4">
+          <mat-form-field>
+            <mat-label>State</mat-label>
+            <input
+              matInput
+              placeholder="Ex. California"
+              formControlName="state"
+            />
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['state'].invalid &&
+              (formControl['state'].dirty || formControl['state'].touched)
+            "
+          >
+            <div *ngIf="formControl['state']">
+              Let's not forget state, shall we...
+            </div>
+          </div>
+        </div>
+        <div class="form-wrapper col-md-4">
+          <mat-form-field>
+            <mat-label>Postal Code</mat-label>
+            <input
+              matInput
+              #postalCode
+              maxlength="5"
+              placeholder="Ex. 94105"
+              value="94043"
+              formControlName="postalCode"
+            />
+            <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+          </mat-form-field>
+          <div
+            class="error-block"
+            *ngIf="
+              formControl['postalCode'].invalid &&
+              (formControl['postalCode'].dirty ||
+                formControl['postalCode'].touched)
+            "
+          >
+            <div *ngIf="formControl['postalCode']">
+              Postman is gonna get lost..
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-wrapper flex-center">
+        <button
+          mat-stroked-button
+          color="primary"
+          class="custom-btn"
+          type="submit"
+          [disabled]="createEditFormGroup.invalid"
+        >
+          Submit
+        </button>
+      </div>
+      <code>Result: {{ formValue | json }}</code>
+    </form>
+  </div>
+</div>

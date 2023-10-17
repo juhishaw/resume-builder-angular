@@ -1,0 +1,135 @@
+<div class="wrapper">
+  <div class="title">Experience</div>
+
+  <form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="employees" class="dynamic-form-wrapper">
+      <ng-container
+        *ngFor="let employee of employees().controls; let empIndex = index"
+      >
+        <div [formGroupName]="empIndex" class="form-loop">
+          <div class="form-group row">
+            <mat-form-field appearance="fill" class="col-md-5">
+              <mat-label>Company</mat-label>
+              <input matInput placeholder="Google" formControlName="company" />
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col-md-5">
+              <mat-label>Location</mat-label>
+              <input
+                matInput
+                placeholder="Hyderabad"
+                formControlName="location"
+              />
+            </mat-form-field>
+            <mat-icon color="warn" (click)="removeEmployee(empIndex)"
+              >delete</mat-icon
+            >
+          </div>
+
+          <div formArrayName="skills" class="skills">
+            <div
+              class="sub-tasks-list-wrapper"
+              id="{{ 'sub-tasks-list-wrapper-' + empIndex }}"
+            >
+              <ng-container
+                *ngFor="
+                  let skill of employeeSkills(empIndex).controls;
+                  let skillIndex = index
+                "
+              >
+                <div
+                  class="sub-tasks-linking"
+                  [appLinkTree]="
+                    getSubTaskWrapperId(
+                      'sub-tasks-list-wrapper-',
+                      empIndex,
+                      skillIndex
+                    )
+                  "
+                  [matchClass]="'title-time-form'"
+                >
+                  <div class="linking"></div>
+                </div>
+                <div [formGroupName]="skillIndex">
+                  <div class="form-group row">
+                    <mat-form-field class="col-md-10">
+                      <mat-label>Roles & Responsibilty</mat-label>
+                      <textarea matInput formControlName="roles"></textarea>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="col-md-5">
+                      <mat-label>From:</mat-label>
+                      <input
+                        matInput
+                        [matDatepicker]="fromDate"
+                        formControlName="fromDate"
+                      />
+                      <mat-hint>MM/DD/YYYY</mat-hint>
+                      <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="fromDate"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #fromDate></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="col-md-5">
+                      <mat-label>To:</mat-label>
+                      <input
+                        matInput
+                        [matDatepicker]="toDate"
+                        formControlName="toDate"
+                      />
+                      <mat-hint>MM/DD/YYYY</mat-hint>
+                      <mat-datepicker-toggle
+                        matIconSuffix
+                        [for]="toDate"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #toDate></mat-datepicker>
+                    </mat-form-field>
+                    <mat-icon
+                      color="warn"
+                      (click)="removeEmployeeSkill(empIndex, skillIndex)"
+                    >
+                      delete
+                    </mat-icon>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <button
+            mat-stroked-button
+            class="custom-btn"
+            color="accent"
+            (click)="addEmployeeSkill(empIndex)"
+          >
+            Add Skill
+          </button>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="bottom flex-center-start">
+      <div class="button-wrapper">
+        <button
+          mat-stroked-button
+          color="primary"
+          class="custom-btn primary"
+          (click)="addEmployee()"
+        >
+          Add Employee
+        </button>
+      </div>
+
+      <div class="button-wrapper">
+        <button
+          mat-stroked-button
+          color="primary"
+          class="custom-btn primary"
+          type="submit"
+          [disabled]="empForm.invalid"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+    <code> Result: {{ formValue | json }} </code>
+  </form>
+</div>

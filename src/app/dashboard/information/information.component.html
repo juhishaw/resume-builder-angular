@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <mat-card>
+        <mat-card-content>
+            <div class="header" *ngIf="personalInfo">
+                <div class="title">
+                    Hey, I'm {{personalInfo.fname | titlecase}} {{personalInfo.lname | titlecase}}.
+                </div>
+                <div class="contact">
+                    <mat-icon>email</mat-icon>{{personalInfo.email}} | <mat-icon>call</mat-icon>{{personalInfo.contact}}
+                </div>
+                <div class="address-info">
+                    {{personalInfo.address | ellipsis:25 }}
+                    <br />
+                    <span>{{personalInfo.city}}</span> |  <span>{{personalInfo.state}}</span> |  <span>{{personalInfo.postalCode}}</span> 
+                </div>
+                <hr>
+                <div class="desc">
+                    {{personalInfo.summary}}
+                </div>
+            </div>
+        </mat-card-content>
+      </mat-card>
+</div>
